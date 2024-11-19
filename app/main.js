@@ -4,9 +4,11 @@
 const URL =
   "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=tmOTqwdrNCT4wJ218FAcoGKribFSalPv";
 async function getData(URL) {
+  // fetch returns a promise
   try {
     const response = await fetch(URL);
     const data = await response.json();
+<<<<<<< HEAD
     console.log(data.results);
     // This all works fine for now
     // map through data.results for articles, then run a function to insert everything into the document
@@ -17,6 +19,7 @@ async function getData(URL) {
         `<b>${article.title}</b> <br>`
       );
     });
+=======
   } catch (error) {
     console.log(error);
   }
