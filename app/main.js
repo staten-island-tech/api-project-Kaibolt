@@ -21,7 +21,7 @@ async function getData(URL) {
         alt="${article.multimedia[1].caption}" />
         </figure>
         <div class="card-body">
-        <h2 class="card-title"><a href="${article.url}">${article.title}</a></h2>
+        <h2 class="card-title"><a class="text-teal-700", href="${article.url}">${article.title}</a></h2>
         <p>${article.abstract}</p>
         </div>
         </div>`
@@ -35,10 +35,6 @@ getData(URL);
 console.log(data.results.length);
 const articleCount = data.results.length;
 for (let i = 0; i < articleCount; i++) {
-  //  console.log(data.results[i]);
-  //  console.log(data.results[i].title);
-  //  console.log(data.results[i].section);
-  //  console.log(data.results[i].section == "arts");
   if (data.results[i].section == "arts") {
     console.log(data.results[i]);
   }
