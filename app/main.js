@@ -3,11 +3,11 @@
 //shows data
 const URL =
   "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=tmOTqwdrNCT4wJ218FAcoGKribFSalPv";
+const response = await fetch(URL);
+const data = await response.json();
 async function getData(URL) {
   try {
-    const response = await fetch(URL);
-    const data = await response.json();
-    console.log(data.results);
+    //    console.log(data.results);
     // This all works fine for now
     // map through data.results for articles, then run a function to insert everything into the document
     //Or I can go through the results and for each article, , insert it as HTML. I like this idea as it's simple.
@@ -16,15 +16,15 @@ async function getData(URL) {
         "beforeend",
         `<div class="card card-compact bg-base-100 w-96 shadow-xl">
         <figure>
-          <img
-            src="${article.multimedia[1].url}"
-            alt="${article.multimedia[1].caption}" />
+        <img
+        src="${article.multimedia[1].url}"
+        alt="${article.multimedia[1].caption}" />
         </figure>
         <div class="card-body">
-          <h2 class="card-title"><a href="${article.url}">${article.title}</a></h2>
-          <p>${article.abstract}</p>
+        <h2 class="card-title"><a href="${article.url}">${article.title}</a></h2>
+        <p>${article.abstract}</p>
         </div>
-      </div>`
+        </div>`
       );
     });
   } catch (error) {
@@ -32,3 +32,14 @@ async function getData(URL) {
   }
 }
 getData(URL);
+console.log(data.results.length);
+const articleCount = data.results.length;
+for (let i = 0; i < articleCount; i++) {
+  //  console.log(data.results[i]);
+  //  console.log(data.results[i].title);
+  //  console.log(data.results[i].section);
+  //  console.log(data.results[i].section == "arts");
+  if (data.results[i].section == "arts") {
+    console.log(data.results[i]);
+  }
+}
