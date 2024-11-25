@@ -16,9 +16,7 @@ async function getData(URL) {
         "beforeend",
         `<div class="card card-compact bg-base-100 w-96 shadow-xl">
         <figure>
-        <img
-        src="${article.multimedia[1].url}"
-        alt="${article.multimedia[1].caption}" />
+        <img src="${article.multimedia[1].url}"alt="${article.multimedia[1].caption}" />
         </figure>
         <div class="card-body">
         <h2 class="card-title"><a class="text-teal-700", href="${article.url}">${article.title}</a></h2>
@@ -39,3 +37,31 @@ for (let i = 0; i < articleCount; i++) {
     console.log(data.results[i]);
   }
 }
+document.querySelector("#All").addEventListener("click", function () {
+  console.log("All Articles");
+  document.querySelector(".flex").innerHTML = "";
+  getData(URL);
+});
+
+document.querySelector("#Art").addEventListener("click", function () {
+  console.log("Art Articles");
+  document.querySelector(".flex").innerHTML = "";
+  const artArticles = data.results.filter(
+    (article) => article.section == "arts"
+  );
+  console.log(artArticles);
+  for (let i = 0; i < artArticles.length; i++) {
+    document.querySelector(".flex").insertAdjacentHTML(
+      "beforeend",
+      `<div class="card card-compact bg-base-100 w-96 shadow-xl">
+    <figure>
+    <img src="${artArticles[i].multimedia[1].url}"alt="${artArticles[i].multimedia[1].caption}" />
+    </figure>
+    <div class="card-body">
+    <h2 class="card-title"><a class="text-teal-700", href="${artArticles[i].url}">${artArticles[i].title}</a></h2>
+    <p>${artArticles[i].abstract}</p>
+    </div>
+    </div>`
+    );
+  }
+});
