@@ -1,8 +1,6 @@
 //
 //gets data
 //shows data
-import { themeChange } from "theme-change";
-themeChange();
 const URL =
   "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=tmOTqwdrNCT4wJ218FAcoGKribFSalPv";
 const response = await fetch(URL);
