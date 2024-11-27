@@ -16,6 +16,21 @@ async function getData() {
     // Generate dropdown menu options dynamically
     const dropdown = document.querySelector(".menu");
     dropdown.innerHTML = ""; // Clear existing options
+
+    // Add a general "All Articles" option first
+    const allOption = document.createElement("li");
+    allOption.id = "All";
+    allOption.innerHTML = `<a>All Articles</a>`;
+    dropdown.appendChild(allOption);
+
+    // Add event listener for "All Articles"
+    allOption.addEventListener("click", () => {
+      console.log("All Articles");
+      document.querySelector("#container").innerHTML = "";
+      displayArticles(data.results);
+    });
+
+    // Append section options dynamically
     sections.forEach((section) => {
       const li = document.createElement("li");
       li.id = section;
@@ -37,20 +52,8 @@ async function getData() {
         displayArticles(filteredArticles);
       });
     });
-
-    // Show all articles by default
+    // Display all articles by default and highlight "All Articles"
     displayArticles(data.results);
-
-    // Add a general "All Articles" option
-    const allOption = document.createElement("li");
-    allOption.id = "All";
-    allOption.innerHTML = `<a>All Articles</a>`;
-    dropdown.prepend(allOption);
-    allOption.addEventListener("click", () => {
-      console.log("All Articles");
-      document.querySelector("#container").innerHTML = "";
-      displayArticles(data.results);
-    });
   } catch (error) {
     console.log(error);
   }
