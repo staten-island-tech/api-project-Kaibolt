@@ -38,7 +38,7 @@ async function getData() {
       li.id = section; // With an id corresponding to the section it came from
 
       // Capitalize the first letter of the section
-      const capitalizedSection =
+      const capitalizedSection = // charAt takes a portion as a string; toUpperCase makes it uppercase 🤯; and slice takes the rest of a string.
         section.charAt(0).toUpperCase() + section.slice(1); // The first character becomes an uppercase, and it adds the rest of the section
 
       li.innerHTML = `<a>${capitalizedSection}</a>`; // The list text is the capitalized word
