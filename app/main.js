@@ -1,6 +1,6 @@
 const URL =
   "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=tmOTqwdrNCT4wJ218FAcoGKribFSalPv";
-async function getData() {
+async function defaultGrab() {
   try {
     const response = await fetch(URL);
     const data = await response.json();
@@ -63,4 +63,15 @@ function displayArticles(articles) {
     );
   });
 }
-getData();
+
+async function defaultSearch() {
+  try {
+    const response = await fetch(URL);
+    const data = await response.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+defaultGrab();
+defaultSearch();
