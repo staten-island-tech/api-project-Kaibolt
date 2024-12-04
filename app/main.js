@@ -73,7 +73,19 @@ async function defaultSearch() {
     document
       .querySelector("#searchButton")
       .addEventListener("click", function () {
-        console.log(document.querySelector("searchBar").value);
+        console.log(document.querySelector("#searchBar").value);
+        let userImput = document.querySelector("#searchBar").value;
+        const searchedArticles = data.results.filter((article) =>
+          article.title.includes(userImput)
+        );
+        console.log(searchedArticles);
+        if ((userImput = "All Articles" || "all articles" || "")) {
+          displayArticles(data.results);
+        }
+        if (userImput != "All Articles" || "all articles" || "") {
+          displayArticles(searchedArticles);
+        }
+        document.querySelector("#searchBar").value = "";
       });
   } catch (error) {
     console.log(error);
