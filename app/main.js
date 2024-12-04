@@ -1,6 +1,6 @@
-const URL =
-  "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=tmOTqwdrNCT4wJ218FAcoGKribFSalPv";
 async function defaultGrab() {
+  const URL =
+    "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=tmOTqwdrNCT4wJ218FAcoGKribFSalPv";
   try {
     const response = await fetch(URL);
     const data = await response.json();
@@ -65,9 +65,16 @@ function displayArticles(articles) {
 }
 
 async function defaultSearch() {
+  const URL =
+    "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=tmOTqwdrNCT4wJ218FAcoGKribFSalPv";
   try {
     const response = await fetch(URL);
     const data = await response.json();
+    document
+      .querySelector("#searchButton")
+      .addEventListener("click", function () {
+        console.log(document.querySelector("searchBar").value);
+      });
   } catch (error) {
     console.log(error);
   }
